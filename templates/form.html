@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}ML Model{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Arimo" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="login">
+    <h1>Crop Prediction Model</h1>
+    <form action="{{url_for('predict')}}" method="post">
+
+        <input type="text" name="Nitrogen" placeholder="nitrogen" required>
+        <input type="text" name="Phosphorous" placeholder="Phosphorous" required>
+        <input type="text" name="Potassium" placeholder="potassium" required>
+        <input type="text" name="Temperture" placeholder="temperture" required>
+        <input type="text" name="Humidity" placeholder="humidity" required>
+        <input type="text" name="PH" placeholder=" pH" required>
+        <input type="text" name="Rainfall" placeholder="Rainfall" required>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+    </form>
+    <h1 id="predi">
+        {{ prediction_text }}
+    </h1>
+</div>
+{% endblock %}
